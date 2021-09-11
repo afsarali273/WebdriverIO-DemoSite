@@ -16,5 +16,9 @@ Given(/^I am on the (.*) page$/, async (page) => {
         " " +
         global.SharedVariable.address.lastName
     );
+  } else if (page === "contact") {
+    await expect(HomePage.link_Contact).toBePresent();
+    await HomePage.link_Contact.click();
+    await commonPage.vaerifyPageHeading("CUSTOMER SERVICE - CONTACT US");
   }
 });

@@ -9,7 +9,7 @@ class commonPage {
       async () => (await $(".page-heading").getText()) === title,
       {
         timeout: 10000,
-        timeoutMsg: "expected text to be different after 15s",
+        timeoutMsg: "expected text is different after 10s",
       }
     );
     const headingTitle = await $(".page-heading");
