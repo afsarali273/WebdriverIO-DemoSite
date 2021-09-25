@@ -1,5 +1,6 @@
 Feature: SignUp and Purchase Product
 
+    @sanity
     Scenario:TC-001 create a new user credentials
         Given I am on the home page
         Then Navigate to SignUp page
@@ -10,7 +11,7 @@ Feature: SignUp and Purchase Product
         When Login using newly created credentials
         Then I shall verify the address information in my addresses section
 
-
+    @sanity
     Scenario:TC-003 Add product to Online Cart and checkout
         Given I am on the Sign In Page
         When Login using newly created credentials

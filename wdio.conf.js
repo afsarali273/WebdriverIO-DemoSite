@@ -110,7 +110,15 @@ exports.config = {
   // your test setup with almost no effort. Unlike plugins, they don't add new
   // commands. Instead, they hook themselves up into the test process.
   services: ["chromedriver"],
-
+  capabilities: [
+    {
+      maxInstances: 1,
+      browserName: "chrome",
+      "goog:chromeOptions": {
+        args: ["--headless"],
+      },
+    },
+  ],
   // Framework you want to run your specs with.
   // The following are supported: Mocha, Jasmine, and Cucumber
   // see also: https://webdriver.io/docs/frameworks

@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "wdio run wdio.conf.js"
+    "test": "wdio run wdio.conf.js",
+    "test:sanity": "wdio run wdio.conf.js --cucumberOpts.tagExpression='@sanity'"
+
   },
   "author": "Afsar",
   "license": "ISC",
