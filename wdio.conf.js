@@ -1,3 +1,5 @@
+const { TimelineService } = require("wdio-timeline-reporter/timeline-service");
+
 exports.config = {
   //
   // ====================
@@ -109,13 +111,12 @@ exports.config = {
   // Services take over a specific job you don't want to take care of. They enhance
   // your test setup with almost no effort. Unlike plugins, they don't add new
   // commands. Instead, they hook themselves up into the test process.
-  services: ["chromedriver"],
+  services: ["chromedriver", [TimelineService]],
   capabilities: [
     {
       maxInstances: 1,
       browserName: "chrome",
       "goog:chromeOptions": {
-        // args: ["--headless"],
         args: [
           "--headless",
           "--no-sandbox",
@@ -146,9 +147,20 @@ exports.config = {
   // Test reporter for stdout.
   // The only one supported by default is 'dot'
   // see also: https://webdriver.io/docs/dot-reporter
-  reporters: ["spec"],
+  //reporters: ["spec"],
 
-  //
+  reporters: [
+    "spec",
+    [
+      "timeline",
+      {
+        outputDir: "./reports",
+        fileName: "time-line-report.html",
+        embedImages: true,
+      },
+    ],
+  ],
+
   // If you are using Cucumber you need to specify the location of your step definitions.
   cucumberOpts: {
     // <string[]> (file/dir) require files before executing features
