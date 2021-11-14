@@ -10,7 +10,27 @@ on:
     branches: [master]
 
 jobs:
-  build:
+  test1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 16.3.0
+
+      - name: Install
+        run: npm install    
+      - run: npm run test
+      - run: npm i -g allure-commandline
+      - run: npm run generate:report
+
+      - name: Test Reports
+        uses: actions/upload-artifact@v2
+        with:
+          name: html-report
+          path: allure-report
+  test2:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -21,7 +41,7 @@ jobs:
           
       - name: Install
         run: npm install    
-      - run: npm run test
+      - run: npm run test:sanity
       - run: npm i -g allure-commandline
       - run: npm run generate:report
 
