@@ -101,7 +101,11 @@ exports.config = {
   framework: "cucumber",
 
   reporters: [
-    "spec",
+    "spec", ['cucumberjs-json', {
+      jsonFolder: 'reporter/json/',
+      language: 'en',
+    },
+    ],
     ["allure", allure_config]
   ],
 

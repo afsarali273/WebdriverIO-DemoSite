@@ -24,12 +24,13 @@ jobs:
       - run: npm run test
       - run: npm i -g allure-commandline
       - run: npm run generate:report
+      - run: npm run generate:cucumberreport
 
       - name: Test Reports
         uses: actions/upload-artifact@v2
         with:
-          name: html-report
-          path: allure-report
+          name: cucumber-report
+          path: reporter
   test2:
     runs-on: ubuntu-latest
     steps:
