@@ -6,7 +6,7 @@
   "scripts": {
     "test": "./node_modules/.bin/wdio run wdio.conf.js",
     "test2": "node wdio.conf.js",
-    "generate:report": "allure generate allure-results --clean && allure open",
+    "generate:report": "allure generate allure-results --clean",
     "test:sanity": "./node_modules/.bin/wdio run wdio.conf.js --cucumberOpts.tagExpression='@sanity'"
   },
   "author": "Afsar",
