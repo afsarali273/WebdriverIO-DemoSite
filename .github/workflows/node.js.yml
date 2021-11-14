@@ -39,11 +39,12 @@ jobs:
         with:
           node-version: 16.3.0
           
-      - name: Install
-        run: npm install    
-      - run: npm run test:sanity
-      - run: npm i -g allure-commandline
-      - run: npm run generate:report
+      - name: Install and Run Test
+        run: |
+          npm install  
+          npm run test:sanity  
+          npm i -g allure-commandline
+          npm run generate:report
 
       - name: Test Reports
         uses: actions/upload-artifact@v2
