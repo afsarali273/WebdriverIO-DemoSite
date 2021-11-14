@@ -1,5 +1,5 @@
 import commonPage from "../../pageobjects/Onlinehop/common.page";
-
+import { dynamicData, staticData } from '../../utils/Utils'
 class ProductPage {
   //   constructor(data) {
   //     this.data = data;
@@ -126,7 +126,7 @@ class ProductPage {
       await this.btnContinueShopping.waitForClickable({ timeout: 10000 });
       await this.btnContinueShopping.click();
 
-      console.log(global.SharedVariable.email);
+      console.log(dynamicData.email);
     }
   };
 
@@ -188,19 +188,19 @@ class ProductPage {
     await expect(
       await this.txt_DeliveryAddressFirstNameLastName.getText()
     ).toEqual(
-      global.SharedVariable.address.firstName +
-        " " +
-        global.SharedVariable.address.lastName
+      dynamicData.address.firstName +
+      " " +
+      dynamicData.address.lastName
     );
 
     await expect(await this.txt_DeliveryAddressCompany.getText()).toEqual(
-      global.SharedVariable.address.company
+      dynamicData.address.company
     );
 
     await expect(await this.txt_DeliveryAdd_Add1_Add2.getText()).toEqual(
-      global.SharedVariable.address.address1 +
-        " " +
-        global.SharedVariable.address.address2
+      dynamicData.address.address1 +
+      " " +
+      dynamicData.address.address2
     );
 
     // Navigate to Shipping page

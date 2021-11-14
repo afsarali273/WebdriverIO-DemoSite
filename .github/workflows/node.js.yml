@@ -25,11 +25,14 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: "npm"
-      - run: npm ci
-      - run: npm test
+      - name: Install
+          run: npm install    
+      - run: npm run test
+      - run: npm i -g allure-commandline
+      - run: npm run generate:report
 
       - name: Test Reports
         uses: actions/upload-artifact@v2
         with:
           name: html-report
-          path: reports/time-line-report.html
+          path: allure-report

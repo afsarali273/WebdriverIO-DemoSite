@@ -1,4 +1,6 @@
 import faker from "faker";
+import { dynamicData, staticData } from '../../utils/Utils'
+
 
 class AuthPage {
   //  Page Objects
@@ -132,8 +134,8 @@ class AuthPage {
   };
 
   signIn = async () => {
-    console.log(global.SharedVariable.email);
-    await this.input_login_Email.setValue(global.SharedVariable.email);
+    console.log(dynamicData.email);
+    await this.input_login_Email.setValue(dynamicData.email);
     await this.input_login_Password.setValue("password123");
     await this.btn_SubmitLogin.click();
   };

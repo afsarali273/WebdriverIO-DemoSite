@@ -4,9 +4,6 @@ class HomePage {
     return $(".login");
   }
 
-  get btnSignOut() {
-    return $(".logout");
-  }
 
   get btnSignOut() {
     return $(".logout");

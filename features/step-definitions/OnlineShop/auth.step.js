@@ -2,6 +2,7 @@ import { Given, When, Then } from "@cucumber/cucumber";
 import HomePage from "../../pageobjects/Onlinehop/home.page";
 import authPage from "../../pageobjects/Onlinehop/auth.page";
 import faker from "faker";
+import { dynamicData, staticData } from '../../utils/Utils'
 
 When(/^Navigate to SignUp page$/, async () => {
   await expect(HomePage.btnSignIn).toBeExisting();
@@ -24,8 +25,8 @@ Then(/^create an account with random username$/, async () => {
     address2: faker.random.alphaNumeric(5),
   };
 
-  global.SharedVariable.email = email;
-  global.SharedVariable.address = addressObj;
+  dynamicData.email = email;
+  dynamicData.address = addressObj;
 
   await authPage.createAccount(email, addressObj);
   await authPage.signOut();

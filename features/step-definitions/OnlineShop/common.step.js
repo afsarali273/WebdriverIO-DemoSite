@@ -1,6 +1,8 @@
 import { Given, When, Then } from "@cucumber/cucumber";
 import commonPage from "../../pageobjects/Onlinehop/common.page";
 import HomePage from "../../pageobjects/Onlinehop/home.page";
+import { dynamicData, staticData } from '../../utils/Utils'
+
 
 Given(/^I am on the (.*) page$/, async (page) => {
   if (page === "home") {
@@ -12,9 +14,9 @@ Given(/^I am on the (.*) page$/, async (page) => {
   } else if (page === "myaccount") {
     await expect(HomePage.btnSignOut).toBePresent();
     await expect(HomePage.txtSignedUserName.getText()).toEqual(
-      global.SharedVariable.address.firstName +
-        " " +
-        global.SharedVariable.address.lastName
+      dynamicData.address.firstName +
+      " " +
+      dynamicData.address.lastName
     );
   } else if (page === "contact") {
     await expect(HomePage.link_Contact).toBePresent();
