@@ -86,7 +86,8 @@ jobs:
       - run: |
           mkdir reporter/json
           ls -lrt 
-          cp -v report-*/*.json ./reporter/json 
+          mv -v report-1/*.json ./reporter/json/*_1.json
+          mv -v report-2/*.json ./reporter/json/*_2.json 
       - run: npm run generate:cucumberreport
 
       - name: Test Reports
