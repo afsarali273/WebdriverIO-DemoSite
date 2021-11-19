@@ -70,12 +70,12 @@ jobs:
         uses: actions/download-artifact@master
         with:
           name: cucumber-report-1
-          path: reporter/json 
+          path: ./ 
       - name: Download Artifact-2
         uses: actions/download-artifact@master
         with:
           name: cucumber-report-2
-          path: reporter/json        
+          path: ./        
           
           
       - name: Install
@@ -84,9 +84,9 @@ jobs:
       # - run: npm i -g allure-commandline
       # - run: npm run generate:report
       - run: |
-          # mkdir reporter/json
+          mkdir reporter/json
           ls -lrt 
-          # cp -v *.json ./reporter/json 
+          cp -v *.json ./reporter/json 
       - run: npm run generate:cucumberreport
 
       - name: Test Reports
