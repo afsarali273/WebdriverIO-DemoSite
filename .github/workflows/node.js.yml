@@ -10,7 +10,7 @@ on:
     branches: [master]
 
 jobs:
-  test1:
+  sanity_test:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -32,7 +32,7 @@ jobs:
         with:
           name: cucumber-report-1
           path: reporter
-  test2:
+  smoke_test:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -55,9 +55,9 @@ jobs:
           name: cucumber-report-2
           path: reporter
 
-  test3:
+  final_reports:
     if: always()
-    needs: [test1, test2]
+    needs: [smoke_test, sanity_test]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -65,6 +65,18 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 16.3.0
+
+      - name: Download Artifact-1
+        uses: actions/download-artifact@master
+        with:
+          name: cucumber-report-1
+          path: reporter/json 
+      - name: Download Artifact-2
+        uses: actions/download-artifact@master
+        with:
+          name: cucumber-report-1
+          path: reporter/json        
+          
           
       - name: Install
         run: npm install    
@@ -74,8 +86,7 @@ jobs:
       - run: |
           mkdir reporter/json
           ls -lrt 
-          cp -v cucumber-report-1/reporter/json/*.json ./reporter/json 
-          cp -v cucumber-report-2/reporter/json/*.json ./reporter/json
+          cp -v *.json ./reporter/json 
       - run: npm run generate:cucumberreport
 
       - name: Test Reports

@@ -8,6 +8,7 @@ var options = {
     storeScreenshots: true,
     reportSuiteAsScenarios: true,
     scenarioTimestamp: true,
+    ignoreBadJsonFile: true,
     launchReport: false,
     metadata: {
         "App Version": "0.3.2",
