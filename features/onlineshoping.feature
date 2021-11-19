@@ -5,15 +5,16 @@ Feature: SignUp and Purchase Product
         Given I am on the home page
         Then Navigate to SignUp page
         And create an account with random username
-
+    @sanity
     Scenario:TC-002 Sign In with newly created user credentials
         Given I am on the Sign In Page
         When Login using newly created credentials
         Then I shall verify the address information in my addresses section
 
-    @sanity
+    @smoke
     Scenario:TC-003 Add product to Online Cart and checkout
-        Given I am on the Sign In Page
+        Given I am on the home page
+        And I am on the Sign In Page
         When Login using newly created credentials
         When I add below products to cart
             | category | subCategory    | name                        | model  | quantity |
@@ -26,7 +27,7 @@ Feature: SignUp and Purchase Product
         Then I shall be able to Buy the product
         And  I shall be able to Buy using cheque payment
 
-
+    @smoke
     Scenario:TC-004 Contact customer service for the previous successful order
         Given I am on the Sign In Page
         When Login using newly created credentials

@@ -6,7 +6,8 @@
     "test": "./node_modules/.bin/wdio run wdio.conf.js",
     "generate:cucumberreport": "node reporter/index.js",
     "generate:report": "allure generate allure-results --clean",
-    "test:sanity": "./node_modules/.bin/wdio run wdio.conf.js --cucumberOpts.tagExpression='@sanity'"
+    "test:sanity": "./node_modules/.bin/wdio run wdio.conf.js --cucumberOpts.tagExpression='@sanity'",
+    "test:smoke": "./node_modules/.bin/wdio run wdio.conf.js --cucumberOpts.tagExpression='@smoke'"
   },
   "author": "Afsar",
   "license": "ISC",

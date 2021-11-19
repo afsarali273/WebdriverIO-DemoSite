@@ -22,14 +22,14 @@ jobs:
       - name: Install
         run: npm install    
       - run: npm run test
-      - run: npm i -g allure-commandline
-      - run: npm run generate:report
-      - run: npm run generate:cucumberreport
+      # - run: npm i -g allure-commandline
+      # - run: npm run generate:report
+      # - run: npm run generate:cucumberreport
 
       - name: Test Reports
         uses: actions/upload-artifact@v2
         with:
-          name: cucumber-report
+          name: cucumber-report-1
           path: reporter
   test2:
     runs-on: ubuntu-latest
@@ -43,15 +43,15 @@ jobs:
       - name: Install and Run Test
         run: |
           npm install  
-          npm run test:sanity  
-          npm i -g allure-commandline
-          npm run generate:report
+          npm run test:smoke  
+          # npm i -g allure-commandline
+          # npm run generate:report
 
       - name: Test Reports
         uses: actions/upload-artifact@v2
         with:
-          name: html-report2
-          path: allure-report
+          name: cucumber-report-2
+          path: reporter
 
   test3:
     needs: [test1, test2]
@@ -65,12 +65,18 @@ jobs:
           
       - name: Install
         run: npm install    
-      - run: npm run test:sanity
-      - run: npm i -g allure-commandline
-      - run: npm run generate:report
+      # - run: npm run test:sanity
+      # - run: npm i -g allure-commandline
+      # - run: npm run generate:report
+      - run: |
+          mkdir reporter/json
+          ls -lrt 
+          cp -v cucumber-report-1/reporter/json/*.json ./reporter/json 
+          cp -v cucumber-report-2/reporter/json/*.json ./reporter/json
+      - run: npm run generate:cucumberreport
 
       - name: Test Reports
         uses: actions/upload-artifact@v2
         with:
-          name: html-report3
-          path: allure-report        
+          name: final-report
+          path: reporter        
