@@ -84,9 +84,9 @@ jobs:
       # - run: npm i -g allure-commandline
       # - run: npm run generate:report
       - run: |
-          mkdir reporter/json
+          # mkdir reporter/json
           ls -lrt 
-          cp -v *.json ./reporter/json 
+          # cp -v *.json ./reporter/json 
       - run: npm run generate:cucumberreport
 
       - name: Test Reports
