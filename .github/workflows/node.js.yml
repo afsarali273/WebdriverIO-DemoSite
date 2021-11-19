@@ -31,7 +31,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: cucumber-report-1
-          path: reporter
+          path: reporter/json
   smoke_test:
     runs-on: ubuntu-latest
     steps:
@@ -53,7 +53,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: cucumber-report-2
-          path: reporter
+          path: reporter/json
 
   final_reports:
     if: always()
@@ -74,7 +74,7 @@ jobs:
       - name: Download Artifact-2
         uses: actions/download-artifact@master
         with:
-          name: cucumber-report-1
+          name: cucumber-report-2
           path: reporter/json        
           
           
