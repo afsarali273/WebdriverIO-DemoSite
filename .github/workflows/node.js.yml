@@ -21,12 +21,13 @@ jobs:
 
       - name: Install
         run: npm install    
-      - run: npm run test
+      - run: npm run test:sanity
       # - run: npm i -g allure-commandline
       # - run: npm run generate:report
       # - run: npm run generate:cucumberreport
 
       - name: Test Reports
+        if: always()
         uses: actions/upload-artifact@v2
         with:
           name: cucumber-report-1
@@ -48,12 +49,14 @@ jobs:
           # npm run generate:report
 
       - name: Test Reports
+        if: always()
         uses: actions/upload-artifact@v2
         with:
           name: cucumber-report-2
           path: reporter
 
   test3:
+    if: always()
     needs: [test1, test2]
     runs-on: ubuntu-latest
     steps:
