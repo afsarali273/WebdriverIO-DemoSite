@@ -2,7 +2,6 @@
   "name": "webdriverio",
   "version": "1.0.0",
   "description": "",
-  "main": "reporter/index.js",
   "scripts": {
     "test": "./node_modules/.bin/wdio run wdio.conf.js",
     "generate:cucumberreport": "node reporter/index.js",

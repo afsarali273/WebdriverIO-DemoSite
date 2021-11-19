@@ -1,5 +1,7 @@
 
 import allureReporter from '@wdio/allure-reporter'
+import cucumberJson from 'wdio-cucumberjs-json-reporter';
+
 
 let allure_config = {
   outputDir: 'allure-results',
@@ -175,8 +177,9 @@ exports.config = {
   // beforeStep: function (step, scenario) {
   // },
 
-  // afterStep: function (step, scenario, result) {
-  // },
+  afterStep: async function (step, scenario, result) {
+    cucumberJson.attach(await browser.takeScreenshot(), 'image/png');
+  },
 
   // afterScenario: function (world, result) {
   // },
