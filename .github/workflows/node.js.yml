@@ -70,12 +70,12 @@ jobs:
         uses: actions/download-artifact@master
         with:
           name: cucumber-report-1
-          path: ./ 
+          path: ./report-1 
       - name: Download Artifact-2
         uses: actions/download-artifact@master
         with:
           name: cucumber-report-2
-          path: ./        
+          path: ./report-2        
           
           
       - name: Install
@@ -86,7 +86,7 @@ jobs:
       - run: |
           mkdir reporter/json
           ls -lrt 
-          cp -v *.json ./reporter/json 
+          cp -v report-*/*.json ./reporter/json 
       - run: npm run generate:cucumberreport
 
       - name: Test Reports
